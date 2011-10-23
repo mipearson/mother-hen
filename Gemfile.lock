@@ -145,8 +145,8 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    turn (0.8.3)
-      ansi
+    turn (0.8.2)
+      ansi (>= 1.2.2)
     tzinfo (0.3.30)
     uglifier (1.0.4)
       execjs (>= 0.3.0)
@@ -166,5 +166,5 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.1.4)
   sqlite3
-  turn
+  turn (< 0.8.3)
   uglifier (>= 1.0.3)

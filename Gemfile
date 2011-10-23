@@ -32,7 +32,7 @@ gem 'jquery-rails'
 
 group :test, :development do
   # Pretty printed test output
-  gem 'turn', :require => false
+  gem 'turn', '< 0.8.3', :require => false # http://stackoverflow.com/questions/7719114/rails-3-1-1-and-cucumber-error whut
   gem 'cucumber-rails'
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
