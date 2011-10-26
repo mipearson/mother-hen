@@ -2,7 +2,7 @@ Slimmonitor::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  match 'monitor' => 'monitor#run'
+  root :to => 'service_check#index'
   
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

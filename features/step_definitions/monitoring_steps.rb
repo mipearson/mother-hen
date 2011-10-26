@@ -23,12 +23,12 @@ Given /^that my configuration file is configured to check this dummy service$/ d
   @config_tempfile.close
 end
 
-When /^I run my monitor$/ do
-  safe_system Rails.root.join('script', 'monitor.rb').to_s, @config_tempfile.path
+When /^I perform a check over that service$/ do
+  ServiceCheckJob.new(:service => :dummy, :host => 'localhost').perform
 end
 
 Then /^the service should appear as 'OK' on the status page$/ do
-  pending # express the regexp above with the code you wish you had
+  get '/'
 end
 
 Then /^I should receive no notification$/ do

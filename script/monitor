@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+require File.expand_path('../../config/application',  __FILE__)
+
+Configuration.parse(File.read(ARGV[0]))
+
+Configuration.hosts.each do |host_name, host|
+  host.services.each do |service_name|
+    service = Configuration.services[service_name]
+    raise "Unknown service #{service} on host #{host_name}" unless service
+    
+    check = ServiceCheckJob.new(:service => service, :host => host) 
+    check.perform
+  end
+end
