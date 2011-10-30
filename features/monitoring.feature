@@ -4,7 +4,7 @@ Feature: Monitoring
     Given I have a dummy service running
     And that my configuration file is configured to check this dummy service
     When I perform a check over that service
-    Then the service should appear as 'OK' on the status page
+    Then the service should appear as "OK" on the status page
     And I should receive no notification
 
   @wip    
@@ -12,7 +12,7 @@ Feature: Monitoring
     Given my dummy service is stopped
     And that my configuration file is configured to check this dummy service
     When I perform a check over that service
-    Then the service should appear as 'OK' on the status page
+    Then the service should appear as "Failure" on the status page
     And I should receive a notification
     
     

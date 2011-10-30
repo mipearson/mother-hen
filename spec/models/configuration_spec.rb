@@ -4,6 +4,7 @@ describe Configuration do
 
   FIXTURE = <<-EOF
     host 'localhost', :services => [:dummy]
+    email 'mipearson@gmail.com'
 
     service :dummy do
       local do
@@ -23,6 +24,7 @@ describe Configuration do
     it { subject.hosts.keys.should include 'localhost' }
     it { subject.services.keys.length.should == 1 }
     it { subject.services.keys.should include :dummy }
+    it { subject.email.should == 'mipearson@gmail.com' }
     
     context "host" do
       subject { Configuration.hosts['localhost'] }

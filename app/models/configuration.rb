@@ -2,12 +2,22 @@ require 'ostruct'
 
 class Configuration
   class DSL
-    attr_reader :services, :hosts
+    attr_reader :services, :hosts, :email
     
     def initialize
       @services = {}
       @hosts = {}
+      @email = nil
     end
+    
+    def email *args
+      if args.length > 0
+        @email = args[0]
+      else
+        @email
+      end
+    end
+        
     def host name, opts = {}
       new_host = OpenStruct.new
       new_host.services = opts[:services] if opts.include? :services
@@ -40,11 +50,14 @@ class Configuration
   end 
   
   class << self
+    attr_reader :email
+    
     def parse string
       dsl = DSL.new
       dsl.instance_eval string
       @services = dsl.services
       @hosts = dsl.hosts
+      @email = dsl.email
     end
     
     def services
