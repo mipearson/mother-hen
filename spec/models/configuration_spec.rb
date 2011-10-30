@@ -6,7 +6,7 @@ describe Configuration do
     host 'localhost', :services => [:dummy]
 
     service :dummy do
-      ruby_block do
+      local do
         'hello'
       end
     end
@@ -36,7 +36,7 @@ describe Configuration do
       subject { Configuration.services[:dummy] }
       
       it { subject.name.should == :dummy }
-      it { subject.ruby_block.call.should == 'hello' }
+      it { subject.local.call.should == 'hello' }
     end
   end
 end

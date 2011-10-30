@@ -10,29 +10,35 @@ Given /^I have a dummy service running$/ do
 end
 
 Given /^that my configuration file is configured to check this dummy service$/ do
-  @config_tempfile = Tempfile.new(%w{slimmonitor_config .rb})
-  @config_tempfile.write <<-EOF
+  Configuration.parse <<-EOF
     host 'localhost', :services => [:dummy]
 
     service :dummy do
-      local do
+      local do |hostname|
         raise "Halp" unless File.exist?("/tmp/a_dummy_service")
       end
     end
   EOF
-  @config_tempfile.close
 end
 
 When /^I perform a check over that service$/ do
-  ServiceCheckJob.new(:service => :dummy, :host => 'localhost').perform
+  @job = ServiceCheckJob.new(:service => :dummy, :host => 'localhost')
+  @job.save
+  @job.perform
 end
 
 Then /^the service should appear as 'OK' on the status page$/ do
-  get '/'
+  visit '/'
+  # save_and_open_page
+  find("section#status tr#job#{@job.id} td.status").should have_content('OK')
+end
+
+Then /^I should receive a notification$/ do
+  pending # express the regexp above with the code you wish you had
 end
 
 Then /^I should receive no notification$/ do
-  pending # express the regexp above with the code you wish you had
+   ActionMailer::Base.deliveries.should be_empty
 end
 
 After do

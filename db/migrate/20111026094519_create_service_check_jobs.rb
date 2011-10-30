@@ -4,6 +4,7 @@ class CreateServiceCheckJobs < ActiveRecord::Migration
       t.string :service
       t.string :host
       t.string :status
+      t.string :result
 
       t.timestamps
     end

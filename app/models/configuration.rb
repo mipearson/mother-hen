@@ -30,11 +30,11 @@ class Configuration
       @ruby_block = lambda {}
     end
     
-    def ruby_block &block
+    def local &block
       if block_given?
-        @ruby_block = block
+        @local = block
       else
-        @ruby_block
+        @local
       end
     end
   end 

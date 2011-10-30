@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20111026094519) do
     t.string   "service"
     t.string   "host"
     t.string   "status"
+    t.string   "result"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
