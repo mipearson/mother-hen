@@ -15,7 +15,7 @@ end
 
 
 Given /^that my configuration file is configured to check this dummy service$/ do
-  Configuration.parse <<-EOF
+  SlimConfiguration.parse <<-EOF
     host 'localhost', :services => [:dummy]
     email 'mipearson@gmail.com'
 
@@ -39,16 +39,17 @@ Then /^the service should appear as "(.+)" on the status page$/ do |status|
   find("section#status tr#job#{@job.id} td.status").should have_content(status)
 end
 
-Then /^I should receive a notification$/ do
+Then /^I should receive no notification$/ do
   ActionMailer::Base.deliveries.should be_empty
-  
-  pending # express the regexp above with the code you wish you had
 end
 
-Then /^I should receive no notification$/ do
+Then /^I should receive a notification$/ do
    ActionMailer::Base.deliveries.length.should == 1
    email = ActionMailer::Base.deliveries.first
-   email.to.should == 'mipearson@gmail.com'
+   email.to.should == ['mipearson@gmail.com']
+   email.subject.should match 'dummy'
+   email.subject.should match 'localhost'
+
 end
 
 After do

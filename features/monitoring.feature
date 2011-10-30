@@ -7,7 +7,6 @@ Feature: Monitoring
     Then the service should appear as "OK" on the status page
     And I should receive no notification
 
-  @wip    
   Scenario: Dummy service stops working
     Given my dummy service is stopped
     And that my configuration file is configured to check this dummy service

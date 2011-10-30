@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Configuration do
+describe SlimConfiguration do
 
   FIXTURE = <<-EOF
     host 'localhost', :services => [:dummy]
@@ -15,10 +15,10 @@ describe Configuration do
   
   describe :parse do
     before :all do
-      Configuration.parse FIXTURE
+      SlimConfiguration.parse FIXTURE
     end
     
-    subject { Configuration }
+    subject { SlimConfiguration }
     
     it { subject.hosts.keys.length.should == 1 }
     it { subject.hosts.keys.should include 'localhost' }
@@ -27,7 +27,7 @@ describe Configuration do
     it { subject.email.should == 'mipearson@gmail.com' }
     
     context "host" do
-      subject { Configuration.hosts['localhost'] }
+      subject { SlimConfiguration.hosts['localhost'] }
       
       it { subject.services.should == [:dummy] }
       it { subject.name.should == 'localhost' }
@@ -35,7 +35,7 @@ describe Configuration do
     end
     
     context "service" do
-      subject { Configuration.services[:dummy] }
+      subject { SlimConfiguration.services[:dummy] }
       
       it { subject.name.should == :dummy }
       it { subject.local.call.should == 'hello' }

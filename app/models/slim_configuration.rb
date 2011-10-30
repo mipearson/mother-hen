@@ -1,6 +1,6 @@
 require 'ostruct'
 
-class Configuration
+class SlimConfiguration
   class DSL
     attr_reader :services, :hosts, :email
     
