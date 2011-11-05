@@ -1,7 +1,7 @@
 class ServiceCheckJob < ActiveRecord::Base
   def perform
-    service_config = SlimConfiguration.services[service]
-    host_config = SlimConfiguration.hosts[host]
+    service_config = MHConfig.services[service]
+    host_config = MHConfig.hosts[host]
     begin
       self.result = service_config.local.call host_config.hostname
       self.status = 'OK'

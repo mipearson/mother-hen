@@ -15,7 +15,7 @@ end
 
 
 Given /^that my configuration file is configured to check this dummy service$/ do
-  SlimConfiguration.parse <<-EOF
+  MHConfig.parse <<-EOF
     host 'localhost', :services => [:dummy]
     email 'mipearson@gmail.com'
 

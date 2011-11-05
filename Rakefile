@@ -4,5 +4,5 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Slimmonitor::Application.load_tasks
+MotherHen::Application.load_tasks
   

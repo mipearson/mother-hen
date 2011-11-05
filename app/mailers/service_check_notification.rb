@@ -4,6 +4,6 @@ class ServiceCheckNotification < ActionMailer::Base
   def failure service_check_job
     @service_check_job = service_check_job
 
-    mail :to => SlimConfiguration.email, :subject => "Service #{service_check_job.service} failed on #{service_check_job.host}"
+    mail :to => MHConfig.email, :subject => "Service #{service_check_job.service} failed on #{service_check_job.host}"
   end
 end

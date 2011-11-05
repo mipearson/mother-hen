@@ -5,7 +5,7 @@ describe ServiceCheckJob do
     before :each do
       @a_host = double('Host', :hostname => 'my_hostname')
       @a_service = double('Service')
-      SlimConfiguration.stub!(:services => {:a_service => @a_service}, :hosts => {'a_host' => @a_host} )
+      MHConfig.stub!(:services => {:a_service => @a_service}, :hosts => {'a_host' => @a_host} )
       @job = ServiceCheckJob.new(:service => :a_service, :host => 'a_host')   
     end
     

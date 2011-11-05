@@ -5,7 +5,7 @@ describe ServiceCheckNotification do
     before :each do
       @service_check_job = ServiceCheckJob.new(:service => :dummy_service, :host => :dummy_host)
       
-      SlimConfiguration.stub!(:email => 'my_email@gmail.com')
+      MHConfig.stub!(:email => 'my_email@gmail.com')
     end
     
     let(:mail) { ServiceCheckNotification.failure(@service_check_job) }

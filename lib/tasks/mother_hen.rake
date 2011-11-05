@@ -1,19 +1,19 @@
-namespace :slimmonitor do
+namespace :mother_hen do
   
   task :configuration do
-    config_file = ENV['SLIMMONITOR_CONFIG'] || Rails.root.join('config', 'slimmonitor.rb'))
-    SlimConfiguration.parse(File.read(config_File))
+    config_file = ENV['MH_CONFIG'] || Rails.root.join('config', 'mother_hen.rb'))
+    MHConfig.parse(File.read(config_File))
   end
   
   desc "Run service checks until killed"
   task :start => :configuration do
-    SlimMonitor::Daemon.start
+    MotherHen::Daemon.start
   end
     while true do
       begun_at = Time.now
-      SlimConfiguration.hosts.each do |host_name, host|
+      MHConfig.hosts.each do |host_name, host|
         host.services.each do |service_name|
-          SlimConfiguration.services[service_name] do
+          MHConfig.services[service_name] do
             begun_check_at = Time.now
             check = ServiceCheckJob.new(:service => :service_name, :host => :host_name)
             check.perform
@@ -26,7 +26,7 @@ namespace :slimmonitor do
           end
         end
       end
-      delta = SlimConfiguration.frequency + begun_at - Time.now
+      delta = MHConfig.frequency + begun_at - Time.now
       if delta > 0
         Rails.logger.debug("Sleeping for #{delta} seconds")
         sleep(delta)
