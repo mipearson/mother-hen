@@ -36,7 +36,7 @@ gem 'mixlib-config', :require => 'mixlib/config'
 group :test, :development do
   # Pretty printed test output
   gem 'turn', '< 0.8.3', :require => false # http://stackoverflow.com/questions/7719114/rails-3-1-1-and-cucumber-error whut
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   gem "rspec-rails"

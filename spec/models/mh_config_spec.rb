@@ -14,13 +14,18 @@ describe MHConfig do
     end
   EOF
   
+  subject { MHConfig }
+  
+  describe "defaults" do
+    it { subject.frequency.should == 5.minutes }
+  end
+  
   describe :parse do
+    
     before :all do
       MHConfig.parse FIXTURE
     end
-    
-    subject { MHConfig }
-    
+        
     it { subject.hosts.keys.length.should == 1 }
     it { subject.hosts.keys.should include 'localhost' }
     it { subject.services.keys.length.should == 1 }

@@ -59,8 +59,8 @@ class MHConfig
   end 
   
   class << self
-    attr_reader :email, :frequency
-    
+    attr_reader :email
+          
     def parse string
       dsl = DSL.new
       dsl.instance_eval string
@@ -68,6 +68,10 @@ class MHConfig
       @hosts = dsl.hosts
       @email = dsl.email
       @frequency = dsl.frequency
+    end
+    
+    def frequency
+      @frequency || 5.minutes
     end
     
     def services

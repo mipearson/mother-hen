@@ -13,8 +13,7 @@ Given /^my dummy service is stopped$/ do
   File.exist?("/tmp/a_dummy_service").should be_false
 end
 
-
-Given /^that my configuration file is configured to check this dummy service$/ do
+Given /^I have been configured to check this dummy service$/ do
   MHConfig.parse <<-EOF
     host 'localhost', :services => [:dummy]
     email 'mipearson@gmail.com'
