@@ -40,4 +40,5 @@ group :test, :development do
   gem 'database_cleaner'
   gem "rspec-rails"
   gem 'launchy'
+  gem 'factory_girl_rails'
 end
