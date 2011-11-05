@@ -1,5 +1,5 @@
 class ServiceCheckNotification < ActionMailer::Base
-  default from: "no-reply@" + `hostname -f`.chomp
+  default :from => "no-reply@" + `hostname -f`.chomp
 
   def failure service_check_job
     @service_check_job = service_check_job
