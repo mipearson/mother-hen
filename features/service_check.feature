@@ -1,4 +1,4 @@
-Feature: Monitoring
+Feature: Service Checks
 
   Scenario: Dummy service is working
     Given I have a dummy service running

@@ -12,4 +12,8 @@ class ServiceCheckJob < ActiveRecord::Base
     end
     save!
   end
+  
+  def ok?
+    self.status == 'OK'
+  end
 end

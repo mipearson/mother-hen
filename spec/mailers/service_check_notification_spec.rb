@@ -20,18 +20,5 @@ describe ServiceCheckNotification do
       mail.subject.should match 'dummy_host'
       mail.subject.should match 'dummy_service'
     end
-    
-    
-
-  #   it "renders the headers" do
-  #     mail.subject.should eq("Failed")
-  #     mail.to.should eq(["to@example.org"])
-  #     mail.from.should eq(["from@example.com"])
-  #   end
-  # 
-  #   it "renders the body" do
-  #     mail.body.encoded.should match("Hi")
-  #   end
   end
-
 end

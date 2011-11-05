@@ -17,6 +17,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'timecop'
 
 gem 'mixlib-config', :require => 'mixlib/config'
  

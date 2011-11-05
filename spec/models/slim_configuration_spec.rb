@@ -5,6 +5,7 @@ describe SlimConfiguration do
   FIXTURE = <<-EOF
     host 'localhost', :services => [:dummy]
     email 'mipearson@gmail.com'
+    frequency 1.minute
 
     service :dummy do
       local do
@@ -24,6 +25,7 @@ describe SlimConfiguration do
     it { subject.hosts.keys.should include 'localhost' }
     it { subject.services.keys.length.should == 1 }
     it { subject.services.keys.should include :dummy }
+    it { subject.frequency.should == 1.minute }
     it { subject.email.should == 'mipearson@gmail.com' }
     
     context "host" do

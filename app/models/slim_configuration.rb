@@ -2,7 +2,7 @@ require 'ostruct'
 
 class SlimConfiguration
   class DSL
-    attr_reader :services, :hosts, :email
+    attr_reader :services, :hosts
     
     def initialize
       @services = {}
@@ -17,6 +17,15 @@ class SlimConfiguration
         @email
       end
     end
+    
+    def frequency *args
+      if args.length > 0
+        @frequency = args[0]
+      else
+        @frequency
+      end
+    end
+    
         
     def host name, opts = {}
       new_host = OpenStruct.new
@@ -50,7 +59,7 @@ class SlimConfiguration
   end 
   
   class << self
-    attr_reader :email
+    attr_reader :email, :frequency
     
     def parse string
       dsl = DSL.new
@@ -58,6 +67,7 @@ class SlimConfiguration
       @services = dsl.services
       @hosts = dsl.hosts
       @email = dsl.email
+      @frequency = dsl.frequency
     end
     
     def services
