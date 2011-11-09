@@ -18,6 +18,7 @@ end
 
 gem 'jquery-rails'
 gem 'haml'
+gem 'twitter-bootstrap-rails'
 
 gem 'mixlib-config', :require => 'mixlib/config'
  
