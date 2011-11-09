@@ -1,3 +1,12 @@
-%section#status
+%section#service_check_jobs
+  .page-header
+    %h1 Service Status
   %table
-    = render @service_check_jobs
+    %thead
+      %th Host
+      %th Service
+      %th Status
+      %th Result
+      %th Time
+    %tbody
+      = render @service_check_jobs

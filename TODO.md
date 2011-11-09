@@ -1,6 +1,5 @@
 # TODO
 
- * Prettify interface
  * Command line script to run checker
  * Munin check
  * SSH check
@@ -10,4 +9,5 @@
  
 ## DONE
 
+  * Prettify interface
   * Periodic service check runner

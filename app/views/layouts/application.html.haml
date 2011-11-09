@@ -5,5 +5,20 @@
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tags
-  %body
-    =yield
+  %body.motherhen
+    / .topbar
+    /   .topbar-inner
+    /     .container
+    /       %a.brand MotherHen
+    /       %ul.nav
+    /         %li
+    /           %a{:href => '#service_check_jobs'} Service Status
+    %header.overview
+      .inner
+        .container
+          %h1 MotherHen
+    
+    .container
+      =yield
+      
+  / TODO: add credit for bit-blue-tile for http://www.dinpattern.com/

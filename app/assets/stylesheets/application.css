@@ -9,3 +9,20 @@
 /*
  *= require twitter/bootstrap
 */
+
+body.motherhen {
+/*  padding-top: 40px; not needed unless we're using the nav*/
+}
+
+header.overview {
+  background: url(/images/bit-tile-blue.png) top center;
+  margin-bottom: 10px;
+}
+
+header h1 {
+  font-size: 76px;
+  padding-top: 80px;
+  padding-bottom: 10px;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
