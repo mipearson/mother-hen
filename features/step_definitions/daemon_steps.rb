@@ -41,5 +41,5 @@ end
 
 Then /^the file should now have approximately '(\d+)' lines$/ do |required_linecount|
   line_count = File.read('/tmp/a_dummy_service').split("\n").length
-  line_count.should be_within(1).of(required_linecount.to_i)
+  line_count.should be_within(2).of(required_linecount.to_i)
 end
