@@ -35,7 +35,7 @@ end
 Then /^the service should appear as "(.+)" on the status page$/ do |status|
   visit '/'
   # save_and_open_page
-  find("section#status tr#job#{@job.id} td.status").should have_content(status)
+  find("section#status tr#service_check_job_#{@job.id} td.status").should have_content(status)
 end
 
 Then /^I should receive no notification$/ do
